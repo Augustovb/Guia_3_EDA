@@ -91,4 +91,42 @@ int addElement (LIST l, void* elemento);
 *	Devuelve 1 si tiene algo (NOT_EMPTY)
 */
 int isListEmpty(LIST l);
+
+
+/*	Funciones get firrst y last element
+*	devuelve el puntero a void donde se encuentra el valor del primer/ultimo elemento
+*
+*	devuelven NULL si la lista esta vacia
+*
+*/
+
+void* getFirstElement (LIST l);
+void* getLastElement(LIST l);
+
+
+
+
+/*		Mas abarcativa que get first/last element
+*
+*		devuelve el elemento que le pidas de la lista, devuelta NULL si la lista esta vacia // se paso un numero mas grande que (l->nodeCount-1)
+*
+*
+*		Se piden numeros de 0 a n siendo n=(l->nodeCount)-1.
+*
+*		Si tengo 10 nodos, el elemento 0 es el primer nodo
+*
+*		
+*/
+void * getThisElement(LIST l, unsigned int numeroDeElemento);
+
+
+/*		Estas funciones se encargan de eliminar el 1er nodo o el ultimo nodo.
+*
+*		devuelven siempre 0 a menos que la lista este vacia, alli devuelve error
+*/
+
+int removeLastElement (LIST l);
+int removeFirstElement (LIST l);
+
+
 #endif

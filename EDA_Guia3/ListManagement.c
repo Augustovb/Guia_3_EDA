@@ -93,7 +93,7 @@ int removeFirstElement (LIST l){
 		if((l->nodeCount)>1){
 		tempNodo=l->firstNode;		//en temp nodo almaceno el puntero al primer nodo
 		l->firstNode=l->firstNode->next; //pongo omo nuevo primero, al segundo
-
+		--(l->nodeCount);
 		free(tempNodo->elemento);	//libero los espacios asignados
 		free(tempNodo);
 		return 0;
@@ -104,11 +104,12 @@ int removeFirstElement (LIST l){
 			l->nodeCount=0;
 			free(tempNodo->elemento);
 			free(tempNodo);
+			
 			return 0;
 		}
 
 
-	}else {return 0;}	//la lista estaba vacia no hubo problema en remover el 1 elemento
+	}else {return ERROR;}	//la lista estaba vacia 
 
 }
 
@@ -129,6 +130,7 @@ int removeLastElement (LIST l){
 		if((l->nodeCount)>1){
 			//debo "buscar el anteultimo", luego eliminarle el puntero al ultimo y ponerlo en NULL
 			// y finalmente hacer que lastelement deje de apuntar alli sino al anteultimo y freear el ultimo
+			// y bajar el nodecount
 
 			tempNodo=l->firstNode;
 			while (i<((l->nodeCount)-2)){
@@ -142,7 +144,7 @@ int removeLastElement (LIST l){
 			tempNodo->next=NULL;
 			free(eraseNodo->elemento);
 			free(eraseNodo);
-
+			--(l->nodeCount);
 
 
 		} else {
@@ -157,6 +159,61 @@ int removeLastElement (LIST l){
 		}
 
 
-	} else {return 0;}
+	} else {return ERROR;} //la lista estaba vacia
 
 }
+
+
+void* getFirstElement (LIST l){
+	unsigned int estado=0;
+
+	estado=isListEmpty(l);
+
+	if(estado){
+		return (l->firstNode->elemento);
+	} else {return NULL;}
+
+
+}
+
+
+void* getLastElement (LIST l){
+
+	unsigned int estado=0;
+
+	estado=isListEmpty(l);
+
+	if(estado){
+		return (l->lastNode->elemento);
+	} else {return NULL;}
+
+
+}
+
+
+
+
+void * getThisElement(LIST l, unsigned int numeroDeElemento){
+	unsigned int i=0;
+	unsigned int estado=0;
+	nodo* tempNodo=l->firstNode;
+	estado=isListEmpty(l);
+
+	if(estado){		//si no esta vacia...
+		if(numeroDeElemento<=((l->nodeCount)-1)){	//si el numero elemento mandado es menor o igual n-1
+
+			for(i=0; i<numeroDeElemento; ++i){
+				tempNodo=tempNodo->next;
+			}
+			return (tempNodo->elemento);
+
+
+
+		}else {return NULL;};		//valor mas alto que el posible
+	} else {return NULL;}		//la lista estaba vacia
+	
+
+}
+
+
+
