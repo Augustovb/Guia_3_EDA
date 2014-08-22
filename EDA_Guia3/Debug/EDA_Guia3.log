@@ -1,10 +1,14 @@
-﻿Build started 21/08/2014 08:42:06 p.m..
+﻿Build started 21/08/2014 10:42:00 p.m..
      1>Project "c:\Users\Augusto\documents\visual studio 2010\Projects\EDA_Guia3\EDA_Guia3\EDA_Guia3.vcxproj" on node 2 (build target(s)).
      1>InitializeBuildStatus:
          Creating "Debug\EDA_Guia3.unsuccessfulbuild" because "AlwaysCreate" was specified.
        ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc100.pdb" /Gd /TC /analyze- /errorReport:prompt ListManagement.c
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc100.pdb" /Gd /TC /analyze- /errorReport:prompt ListManagement.c main.c
+         main.c
          ListManagement.c
+         Generating Code...
+     1>c:\users\augusto\documents\visual studio 2010\projects\eda_guia3\eda_guia3\listmanagement.c(70): warning C4715: 'addElement' : not all control paths return a value
+     1>c:\users\augusto\documents\visual studio 2010\projects\eda_guia3\eda_guia3\listmanagement.c(86): warning C4716: 'removeFirstElement' : must return a value
        ManifestResourceCompile:
          All outputs are up-to-date.
        Link:
@@ -24,4 +28,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:00.79
+Time Elapsed 00:00:00.92
