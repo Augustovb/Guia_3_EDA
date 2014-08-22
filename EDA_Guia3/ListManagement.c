@@ -80,7 +80,83 @@ int isListEmpty(LIST l){
 }
 
 
+//elimina el primer elemento
 
-int removeFirstElement (){
+int removeFirstElement (LIST l){
+	unsigned int estadoLocal=0;
+	nodo* tempNodo;
+	
+	
+	estadoLocal=isListEmpty(l);
+
+	if(estadoLocal){
+		if((l->nodeCount)>1){
+		tempNodo=l->firstNode;		//en temp nodo almaceno el puntero al primer nodo
+		l->firstNode=l->firstNode->next; //pongo omo nuevo primero, al segundo
+
+		free(tempNodo->elemento);	//libero los espacios asignados
+		free(tempNodo);
+		return 0;
+		} else {
+			tempNodo=l->firstNode;		//como esta solo el primero tengo que eliminarlo y poner en null a l
+			l->firstNode=NULL;
+			l->lastNode=NULL;
+			l->nodeCount=0;
+			free(tempNodo->elemento);
+			free(tempNodo);
+			return 0;
+		}
+
+
+	}else {return 0;}	//la lista estaba vacia no hubo problema en remover el 1 elemento
+
+}
+
+
+
+
+int removeLastElement (LIST l){
+	unsigned int i=0;
+	unsigned int estadoLocal=0;
+	nodo* tempNodo;
+	nodo* eraseNodo;
+
+	//chequeo que la lista no este vacia
+
+	estadoLocal=isListEmpty(l);		//si esta vacia directamente vuelvo porque no hay nada que devolver
+
+	if(estadoLocal){
+		if((l->nodeCount)>1){
+			//debo "buscar el anteultimo", luego eliminarle el puntero al ultimo y ponerlo en NULL
+			// y finalmente hacer que lastelement deje de apuntar alli sino al anteultimo y freear el ultimo
+
+			tempNodo=l->firstNode;
+			while (i<((l->nodeCount)-2)){
+				tempNodo=tempNodo->next;
+
+				++i;
+			}		//tempNodo me apunta al anteultimo
+
+			eraseNodo=l->lastNode;
+			l->lastNode=tempNodo;
+			tempNodo->next=NULL;
+			free(eraseNodo->elemento);
+			free(eraseNodo);
+
+
+
+		} else {
+			tempNodo=l->lastNode;		//como esta solo elultimo (que es lo mismo que este solo el 1) tengo que eliminarlo y poner en null a l
+			l->firstNode=NULL;
+			l->lastNode=NULL;
+			l->nodeCount=0;
+			free(tempNodo->elemento);
+			free(tempNodo);
+			return 0;
+
+		}
+
+
+	} else {return 0;}
 
 }
