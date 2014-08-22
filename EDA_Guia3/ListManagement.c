@@ -63,7 +63,7 @@ int addElement (LIST l, void* elemento){
 	} else if(newNode==NULL){
 		free(newElement);
 		return ERROR;
-	}
+	} else {return ERROR;}
 
 
 
@@ -80,7 +80,6 @@ int isListEmpty(LIST l){
 }
 
 
-//elimina el primer elemento
 
 int removeFirstElement (LIST l){
 	unsigned int estadoLocal=0;
@@ -217,3 +216,51 @@ void * getThisElement(LIST l, unsigned int numeroDeElemento){
 
 
 
+
+
+int removeThisElement(LIST l, unsigned int numeroDeElemento) {
+	unsigned int i=0;
+	unsigned int estado=0;
+	nodo* tempNodo=l->firstNode;
+	nodo* eraseNodo;
+
+
+	estado=isListEmpty(l);		//chequeo si la lista esta o no vacia
+	if(estado){
+
+		if(numeroDeElemento=0){				//me esta pidiendo el primero
+			return (removeFirstElement(l));
+
+		} else if( numeroDeElemento<=((l->nodeCount)-1)){		//algun otro
+
+			if(numeroDeElemento==((l->nodeCount)-1)){		//es el ultimo
+				return (removeLastElement(l));
+
+			}else {
+				while (i<(numeroDeElemento-2)){
+					tempNodo=tempNodo->next;
+
+					++i;
+				}		//tempNodo me apunta al anterior al que quiero eliminar
+
+				eraseNodo=tempNodo->next;
+				tempNodo->next=eraseNodo->next;
+				--(l->nodeCount);
+				free(eraseNodo->elemento);
+				free(eraseNodo);
+
+				return 0;
+
+			}
+
+
+
+
+		} else{return ERROR;}	//se pidio mas elementos de lo que se tiene
+
+
+
+	} else {return ERROR;}		//la lista estaba vacia!, ojo programador!
+
+
+}

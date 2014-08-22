@@ -4,6 +4,38 @@
 #ifndef ListManagement__H
 #define ListManagement__H
 
+
+
+
+/*
+INDICE DE FUNCIONES:
+
+LIST createList(unsigned int size);
+
+int addElement (LIST l, void* elemento);
+
+
+int isListEmpty(LIST l);
+
+
+void* getFirstElement (LIST l);
+void* getLastElement(LIST l);
+
+
+
+void * getThisElement(LIST l, unsigned int numeroDeElemento);
+
+
+int removeLastElement (LIST l);
+int removeFirstElement (LIST l);
+
+
+int removeThisElement(LIST l, unsigned int numeroDeElemento);
+
+
+
+*/
+
 /***************
 * CONSTANTES   *
 ***************/
@@ -123,10 +155,28 @@ void * getThisElement(LIST l, unsigned int numeroDeElemento);
 /*		Estas funciones se encargan de eliminar el 1er nodo o el ultimo nodo.
 *
 *		devuelven siempre 0 a menos que la lista este vacia, alli devuelve error
+*
+*
+*	combinando estas con add element puedo hacerla funcionar como: cola/fila o pila
+*
 */
 
 int removeLastElement (LIST l);
 int removeFirstElement (LIST l);
+
+
+
+/*	Mas compleja que remove first/last element.
+*
+*	Retorna ERRROR (-1) si la lista esta vacia,
+*	numero de elemento 0 es el primer elemento
+* numero de elemento l->nodeCount -1 es el ultimo
+*
+*		Libera el espacio del nodo y se encarga de que siga correlacionada la lista enlazada
+*/
+
+int removeThisElement(LIST l, unsigned int numeroDeElemento);
+
 
 
 #endif
